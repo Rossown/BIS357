@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Index
+{% endblock %}
+
+{% block content %}
+<title>Nathan Rossow's Sales Order Viewer</title>
+{% if name %}
+  <h1>Hello {{ name }}!</h1>
+{% else %}
+  <h1>Click the Button to go Find a Sales Order</h1>
+<button type="button" id='salesorderpage'><a href=" {{ url_for('salesorderpage') }} ">Sales Order Page</a></button>
+{% endif %}
+
+{% endblock %}

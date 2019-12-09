@@ -1,0 +1,18 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - Flaskr</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+<nav>
+  <div id='navLeft'>
+      <h1>BIS 357S Final Project</h1>
+      <h3>Nathan Rossow</h3>
+      <h3>December 13th 2019</h3>
+  </div>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  <div id="main">
+    {% block content %}{% endblock %}  
+  </div>
+</section>
