@@ -28,6 +28,8 @@ def salesorderpage():
     
     num = request.form.get('salesnumber')
     print("HERE" + num)
+    if(str(num).isspace() or not str(num)):
+        return render_template('salesorderfind.html')
     myJson = getSalesOrder(int(str(num)))
     return render_template('salesorderview.html', data=myJson)
 
@@ -47,7 +49,9 @@ def getSalesOrder(id):
         replaceWith = '"' + replace + '"'
         thing = thing.replace(replace, replaceWith)
     myJson = json.loads(thing)
-
-    for x in range(0, len(myJson)):
-        myJson[x]['BSTDK'] = datetime.strptime(str(myJson[x]['BSTDK']), '%Y%m%d').date()
+    print(len(myJson))
+    if(len(myJson) > 0 ):
+        for x in range(0, len(myJson)):
+            if myJson[x]['BSTDK']:
+                myJson[x]['BSTDK'] = datetime.strptime(str(myJson[x]['BSTDK']), '%Y%m%d').date()
     return myJson

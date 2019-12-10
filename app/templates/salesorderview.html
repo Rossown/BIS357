@@ -4,7 +4,7 @@ View Sales Order
 {% endblock %}
 
 {% block content%}
-{% if data %}
+{% if data|length > 0 %}
     <h2>Header Information</h2>
     <table class="pure-table pure-table-bordered" style="margin: 0px auto;">
         <tr>
@@ -58,6 +58,6 @@ View Sales Order
     </table>
     {% endfor%}
 {% else %}
-     Why not  
+<p>Nothing to Display</p>
 {% endif %}
 {% endblock %}
