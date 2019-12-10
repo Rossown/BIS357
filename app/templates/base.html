@@ -1,14 +1,11 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - Flaskr</title>
+<title>{% block title %}{% endblock %} - Flask</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
 <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
-<nav>
-  <div id='navLeft'>
-      <h1>BIS 357S Final Project</h1>
-      <h3>Nathan Rossow</h3>
-      <h3>December 13th 2019</h3>
-  </div>
-</nav>
+<ul>
+  <li><a href=" {{ url_for('index') }} ">Home</a></li>
+  <li><a href=" {{ url_for('salesorderpage') }} ">Sales Order Page</a></li>
+</ul> 
 <section class="content">
   <header>
     {% block header %}{% endblock %}

@@ -27,18 +27,10 @@ def salesorderpage():
         return render_template('salesorderfind.html')
     
     num = request.form.get('salesnumber')
-    print("HERE" + num)
     if(str(num).isspace() or not str(num)):
         return render_template('salesorderfind.html')
     myJson = getSalesOrder(int(str(num)))
     return render_template('salesorderview.html', data=myJson)
-
-@app.route("/summary")
-def summary():
-    d = requests.get('http://cbahaph9b.central.cmich.local:8080/sap/bc/114rest_service/0000000156?sap-client=555')
-    retval = d.json()
-    print(retval['VBELN'])
-    return retval
 
 def getSalesOrder(id):
     d = requests.get('http://cbahaph9b.central.cmich.local:8080/sap/bc/114rest_service/' + format(id, '010d') + '?sap-client=555')
@@ -49,9 +41,8 @@ def getSalesOrder(id):
         replaceWith = '"' + replace + '"'
         thing = thing.replace(replace, replaceWith)
     myJson = json.loads(thing)
-    print(len(myJson))
     if(len(myJson) > 0 ):
         for x in range(0, len(myJson)):
-            if myJson[x]['BSTDK']:
+            if 'BSTDK' in myJson[x]:
                 myJson[x]['BSTDK'] = datetime.strptime(str(myJson[x]['BSTDK']), '%Y%m%d').date()
     return myJson
