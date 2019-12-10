@@ -1,7 +1,8 @@
 /* https://coolors.co/fffffa-515052-000103-333138-ff312e */
 body{
-    background-color: #515052;
-    color: #fffffa;
+    /* background-color: #515052;
+    color: #fffffa; */
+    font-family: Roboto;
 }
 
 #main{

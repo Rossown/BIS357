@@ -1,7 +1,8 @@
 from app import app
 from flask import request,redirect, render_template, session, url_for, escape, jsonify
 from collections import namedtuple
-import requests, json
+import requests, json, re
+from datetime import datetime
 
 @app.before_request
 def clear_trailing():
@@ -40,7 +41,13 @@ def summary():
 def getSalesOrder(id):
     d = requests.get('http://cbahaph9b.central.cmich.local:8080/sap/bc/114rest_service/' + format(id, '010d') + '?sap-client=555')
     thing = d.text
+    toReplace = re.findall(r'[:][0][0-9]+',thing)
+    for x in range(0, len(toReplace)):
+        replace = toReplace[x][1:]
+        replaceWith = '"' + replace + '"'
+        thing = thing.replace(replace, replaceWith)
     myJson = json.loads(thing)
-    if myJson:
-        return myJson
-    return
+
+    for x in range(0, len(myJson)):
+        myJson[x]['BSTDK'] = datetime.strptime(str(myJson[x]['BSTDK']), '%Y%m%d').date()
+    return myJson

@@ -4,9 +4,10 @@ View Sales Order
 {% endblock %}
 
 {% block content%}
-<form method='POST'>
-    <label>Sales number:</label>
-    <input type='text' name='salesnumber' id='salesnumber'/><br/>
-    <p><input type=submit value="Find Sales Order"></p>
+<form method='POST' class="pure-form">
+    <legend>Find a Sales Order</legend>
+    <br/>
+    <input type='text' name='salesnumber' id='salesnumber' placeholder="Sales Order Number"/><br/><br/>
+    <button type="submit" class="pure-button pure-button-primary">Submit</button>
 </form>
 {% endblock %}

@@ -5,8 +5,59 @@ View Sales Order
 
 {% block content%}
 {% if data %}
-    <p>{{ data['VBELN'] }}</p>
+    <h2>Header Information</h2>
+    <table class="pure-table pure-table-bordered" style="margin: 0px auto;">
+        <tr>
+            <td>Order Number:</td>
+            <td>{{ data[0]['VBELN'] }}</td>
+        </tr>
+        <tr>
+            <td>Sold-To Party:</td>
+            <td>{{ data[0]['KUNNR'] }}</td>
+        </tr>
+        <tr>
+            <td>Ship-To Party:</td>
+            <td>{{ data[0]['KUNNR'] }}</td>
+        </tr>
+        <tr>
+            <td>Purchase Order Number:</td>
+            <td>{{ data[0]['BSTNK'] }}</td>
+        </tr>
+        <tr>
+            <td>Purchase Order Date:</td>
+            <td>{{ data[0]['BSTDK'] }}</td>
+        </tr>
+        <tr>
+            <td>Net Total Price:</td>
+            <td>${{ data[0]['NETWR'] }}</td>
+        </tr>
+        <tr>
+            <td>Sales Organization:</td>
+            <td>{{ data[0]['VKORG'] }}</td>
+        </tr>
+    </table>
+    {% for i in range(0,data|length)%}
+    <h2> Item #{{ data[i]['POSNR'] }}</h2>
+    <table class="pure-table pure-table-bordered" style="margin: 0px auto;">  
+        <tr>
+            <td>Material:</td>
+            <td>{{data[i]['MATNR']}}</td>
+        </tr>
+        <tr>
+            <td>Order Quantity:</td>
+            <td>{{data[i]['KWMENG']}}</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>{{data[i]['ARKTX']}}</td>
+        </tr>
+        <tr>
+            <td>Item Price:</td>
+            <td>${{data[i]['NETPR']}}</td>
+        </tr>
+    </table>
+    {% endfor%}
 {% else %}
-    <p>Why not</p>
+     Why not  
 {% endif %}
 {% endblock %}
