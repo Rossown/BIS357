@@ -31,3 +31,6 @@ Nathan Rossow
 3. run powershell script `.\venv\bin\Activate.ps1`
 4. Run command `flask run` once you see `(venv)` infront of the Powershell command line interface
 5. You should see the server start up and give you a link to see the website (Running on http://127.0.0.1:5000/)
+
+# What the Command Line Interface should look like
+![Running Code](https://user-images.githubusercontent.com/30411023/70719400-eab0ad80-1cbf-11ea-9835-70a99ae513e1.png)
